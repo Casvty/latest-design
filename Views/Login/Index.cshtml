@@ -1,0 +1,21 @@
+﻿@model LoginViewModel
+
+<body class="text-center">
+    <form class="form-signin" asp-action="Index">
+        <img class="mb-4" src="~/bilder/1Evenue.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Logga in</h1>
+        <label for="Username" class="sr-only">Användarnamn</label>
+        <input asp-for="Username" class="form-control" placeholder="E-post" required="" autofocus="">
+        <label for="Password" class="sr-only">Password</label>
+        <input type="password" asp-for="Password" class="form-control" placeholder="Lösenord" required="">
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Kom ihåg mig
+            </label>
+        </div>
+        <input class="btn btn-lg btn-dark btn-block" id="grad-btn" type="submit"value = "Logga in" />
+    </form>
+    <br />
+    <br />
+    <br />
+</body>
