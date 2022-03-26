@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,15 +6,24 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using test_design.Constants;
 using test_design.Models;
+using test_design.Services;
+using static test_design.Constants.ServiceConstants;
 
 namespace test_design.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger _logger;
+        public HomeController(ILogger logger)
+        {
+            _logger = logger;
+        }
         public async Task<IActionResult> Index()
         {
             SponsorEventViewModel sponsorEvent = new SponsorEventViewModel(); 
+
             List<Event> eventList = new List<Event>();
             using (var httpClient = new HttpClient())
             {
@@ -23,10 +31,13 @@ namespace test_design.Controllers
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     eventList = JsonConvert.DeserializeObject<List<Event>>(apiResponse);
+                    await _logger.LoggAsync(GroupTwo.LocalService, EventType.Information,
+                        $"Home {nameof(Index)}, {response.StatusCode}");     
                 }
             }
+
+
             sponsorEvent.Events = eventList; 
-            return View(sponsorEvent);
 
             List<Sponsor> sponsorList = new List<Sponsor>();
             using (var httpClient = new HttpClient())
@@ -34,6 +45,7 @@ namespace test_design.Controllers
                 using (var response = await httpClient.GetAsync("http://193.10.202.76/SponsorsAPI/api/Sponsors"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
+                    
                     sponsorList = JsonConvert.DeserializeObject<List<Sponsor>>(apiResponse);
                 }
             }
@@ -61,15 +73,6 @@ namespace test_design.Controllers
         //    }
         //    return View(receivedReservation);
         //}
-
-
-
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         //public IActionResult Index()
         //{

@@ -13,17 +13,16 @@ namespace test_design.Models
         public int Id { get; set; }
         [JsonProperty]
         public string Name { get; set; }
-        //public int Date { get; set; }
-        //public int StartTime { get; set; }
-        //public int EndTime { get; set; }
-        //public string Location { get; set; }
-        //public string City { get; set; }
+        [JsonProperty]
+        public string StartTime { get; set; }
+        [JsonProperty]
+        public string EndTime { get; set; }
         [JsonProperty]
         public string Description { get; set; }
-        //public int Price { get; set; }
-        //public string Category { get; set; }
         [JsonProperty]
-        public string Priority { get; set; }
+        public string Category { get; set; }
+        [JsonProperty]
+        public int Prioritize { get; set; }
         [JsonProperty]
         public byte[] Picture { get; set; }
         [JsonProperty]

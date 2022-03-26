@@ -1,14 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace test_design.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class Sponsor
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string image { get; set; }
+        [JsonProperty]
+        public int Id { get; set; }
+        [JsonProperty]
+        public string Name { get; set; }
+        [JsonProperty]
+        public byte[] Image { get; set; }
     }
 }

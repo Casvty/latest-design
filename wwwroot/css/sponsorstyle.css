@@ -1,0 +1,52 @@
+
+/* Sponsor */
+.local-gallery {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.pic {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px lightgray;
+}
+
+    .pic img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    border-radius: 10px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+    .overlay:hover {
+        opacity: 0.5;
+    }
+
+.overlayname {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
